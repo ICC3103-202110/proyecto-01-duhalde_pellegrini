@@ -31,8 +31,9 @@ class Player:
         return kill_card
 
     def coup(self):
+        n = input('Choose which player do you want to kill')
         self.cards.remove(0)
-        print('')
+        return n 
 
     
         
