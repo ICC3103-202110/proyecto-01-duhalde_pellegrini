@@ -14,7 +14,7 @@ def start_game():
     while True:
         if game.actual_turn == game.final_turn:
             game.actual_turn = 0 
-            print('new rounnd...')
+            print('new round...')
              
 
         elif game.actual_turn != game.final_turn:
