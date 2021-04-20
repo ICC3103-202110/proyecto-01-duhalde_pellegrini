@@ -55,7 +55,7 @@ class Player:
             print(players[kill-1].name, 'cards:',players[kill-1].cards)
 
             break
-        
+    
 
     
         

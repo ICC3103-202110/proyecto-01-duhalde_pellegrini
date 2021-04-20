@@ -52,12 +52,13 @@ class Cards:
             break
        
     def ambassador(self):
-        player.recieve_cards()
+        player[game.actual_turn].recieve_cards()
         print('select which cards you want to discard')
-        player.kill_card
-        player.kill_card
+        player[game.actual_turn].kill_card
+        player[game.actual_turn].kill_card
 
-    def condesa(self):
+    def contessa(self):
+        #la condesa no hace cambios, solo bloquea.
         
 
 

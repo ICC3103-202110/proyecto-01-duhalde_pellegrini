@@ -12,9 +12,9 @@ class Block:
         Player.money -=3
         
     def block_ambassador(self):
-        if player.money < 2:
-            player.money += player.money
-            playern.money -= player.money
+        if player[].money < 2:
+            player[game.actual_turn].money += player[game.actual_turn].money
+            player[].money-= player.money
         else :
             player.money +=2 
             playern.money -= 2
