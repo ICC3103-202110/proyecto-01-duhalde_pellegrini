@@ -29,7 +29,8 @@ class Player:
     
     #no use yet
     def kill_card(self):
-        kill_card = int(input('what card do you want to eliminate (1/2): '))
+        kill_card = int(input('what card do you want to eliminate (1/2): ')) -1 
+        kill_card = player.cards.pop(kill_card)
         return kill_card
     
     def coup(self, players):

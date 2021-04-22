@@ -166,19 +166,19 @@ class Cards:
                     return 
        
     def ambassador(self,players,actual_turn):
-        '''
-        players[actual_turn].recieve_cards()
-        print('select which cards you want to discard')
-        players[actual_turn].kill_card
-        players[actual_turn].kill_card
-        '''
         players_that_block = []
         players_that_block = (game.ask_who_blocks_card(actual_turn, players))
 
 
         if not players_that_block:
             print('your play was succesfull, no one blocked you!')
-            # dos nuevas cartas
+            players[actual_turn].recieve_cards(deck.deck_of_cards[0])
+            deck.deck_of_cards.remove(deck.deck_of_cards[0])
+            players[actual_turn].recieve_cards(deck.deck_of_cards[0])
+            deck.deck_of_cards.remove(deck.deck_of_cards[0])
+            print('select which cards you want to discard')
+            players[actual_turn].kill_card
+            players[actual_turn].kill_card
             return
         else:
             print('person that blocked: ',players_that_block.name)
@@ -201,7 +201,13 @@ class Cards:
                     return           
                 else:
                     print('you lost the count', players_that_block.name,'you loose a cards')
-                    # dos nuevas cartas 
+                    players[actual_turn].recieve_cards(deck.deck_of_cards[0])
+                    deck.deck_of_cards.remove(deck.deck_of_cards[0])
+                    players[actual_turn].recieve_cards(deck.deck_of_cards[0])
+                    deck.deck_of_cards.remove(deck.deck_of_cards[0])
+                    print('select which cards you want to discard')
+                    players[actual_turn].kill_card
+                    players[actual_turn].kill_card
                     players_that_block.cards.pop(0)
                     x = players.index(players_that_block)
                     game.remove_losers(x, players)

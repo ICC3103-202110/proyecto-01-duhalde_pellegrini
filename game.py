@@ -128,6 +128,12 @@ class Game:
         else:
             return False
 
+    def show_and_take(self,players):
+        n = int(input('select which card you want to show'))
+        print(player[actual_turn].cards[n])
+        player.recieve_cards(1)
+        return
+
 game = Game()
         
     

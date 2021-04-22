@@ -2,6 +2,7 @@ from player import Player
 from cards import Cards
 from game import Game
 from deck_cards import Deck_cards
+from verify_inputs import Verify
 
 deck = Deck_cards()
 players = []
@@ -27,6 +28,10 @@ def start_game():
             
             print('its the turn of', players[actual_turn].name) 
             option = p1.player_action()
+            if Verify.verify_plays(option) == True:
+                continue
+            else :
+                option = p1.player_action()
             while True:
                 
                 if option == 1:
