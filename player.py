@@ -1,5 +1,6 @@
 import random
 from game import Game
+game = Game()
 class Player:
 
     def __init__(self, name, money, cards):
@@ -8,6 +9,7 @@ class Player:
         self.name = name
         self.cards = cards
         self.action = 0
+        self.player_list = []
 
     def recieve_cards(self, v):
         self.cards.append(v)
@@ -29,8 +31,8 @@ class Player:
     def kill_card(self):
         kill_card = int(input('what card do you want to eliminate (1/2): '))
         return kill_card
-
-    def coup(self):
+    
+    def coup(self, players):
         if len(players) == 3:
             print('you do you want to kill:')
             print('1) kill', players[0].name)
@@ -40,7 +42,8 @@ class Player:
             kill = int(input('select the number in here: '))
             players[kill-1].cards.pop(0)
             print(players[kill-1].name, 'cards:',players[kill-1].cards)
-            break
+            return
+            
 
         elif len(players) == 4:
 
@@ -53,8 +56,21 @@ class Player:
             kill = int(input('select the number in here: '))
             players[kill-1].cards.pop(0)
             print(players[kill-1].name, 'cards:',players[kill-1].cards)
+            return
+        
+        elif len(players) == 2:
+            print('who you do you want to kill:')
+            print('1) kill', players[0].name)
+            print('2) kill', players[1].name)
 
-            break
+            kill = int(input('select the number in here: '))
+            players[kill-1].cards.pop(0)
+            print(players[kill-1].name, 'cards:',players[kill-1].cards)
+            return
+        
+ 
+
+           
     
 
     
