@@ -1,5 +1,5 @@
 
-
+import random
 class Deck_cards:
 
     def __init__(self):

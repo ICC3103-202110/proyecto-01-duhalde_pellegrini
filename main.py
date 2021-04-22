@@ -1,8 +1,9 @@
 from player import Player
 from cards import Cards
 from game import Game
+from deck_cards import Deck_cards
 
-
+deck = Deck_cards()
 players = []
 game = Game()
 p1 = Player(0,0,0)
@@ -11,81 +12,89 @@ cards = Cards()
 def start_game():
 
     game.welcome_board()
+    p1.player_list = players
+    final_turn = len(p1.player_list)
+    actual_turn = 0
+    
+
     while True:
-        if game.actual_turn == game.final_turn:
-            game.actual_turn = 0 
-            print('new rounnd...')
+        if actual_turn >= final_turn:
+            actual_turn = 0 
+            print('new round...')
              
 
-        elif game.actual_turn != game.final_turn:
+        elif actual_turn != final_turn:
             
-            print('its the turn of', players[game.actual_turn].name) 
+            print('its the turn of', players[actual_turn].name) 
             option = p1.player_action()
             while True:
                 
                 if option == 1:
+
                     print('you chose ingreso')
-                    players[game.actual_turn].money += 1
-                    print(players[game.actual_turn].name,'money: ',players[game.actual_turn].money)
+                    players[actual_turn].money += 1
+                    print(players[actual_turn].name,'money: ',players[actual_turn].money)
                     break
+
                 elif option == 2:
+
                     print('you chose ayuda externa')
-                    players[game.actual_turn].money += 2
-                    print(players[game.actual_turn].name,'money: ',players[game.actual_turn].money)
+                    cards.external_help(players,actual_turn)
                     break
+
                 elif option == 3:
+
                     print('you chose Coup')
-                    if players[game.actual_turn].money < 7:
+                    if players[actual_turn].money < 7:
                         print('you do not have enough money to use this option.')
-                        #poner que tiene que volver a preguntarle al mismo jugador que quiere hacer
+                        print('choose another option')
+                        actual_turn -= 1
                         break
-
                     else:
-
-                        if len(players) == 3:
-
-                            print('you do you want to kill:')
-                            print('1) kill', players[0].name)
-                            print('2) kill', players[1].name)
-                            print('3) kill', players[2].name)
-
-                            kill = int(input('select the number in here: '))
-                            players[kill-1].cards.pop(0)
-                            print(players[kill-1].name, 'cards:',players[kill-1].cards)
-                            break
-
-                        elif len(players) == 4:
-
-                            print('who you do you want to kill:')
-                            print('1) kill', players[0].name)
-                            print('2) kill', players[1].name)
-                            print('3) kill', players[2].name)
-                            print('4) kill', players[3].name)
-
-                            kill = int(input('select the number in here: '))
-                            players[kill-1].cards.pop(0)
-                            print(players[kill-1].name, 'cards:',players[kill-1].cards)
-
-                            break
+                        player.coup()
 
                 elif option == 4:
+
                     print('you chose Capitan')
+                    cards.captain(players,actual_turn)
+                    
                     break
+
                 elif option == 5:
+
                     print('you chose Asesino ')
-                    break
-                elif option == 6:  
+                    if players[actual_turn].money >= 3:
+                        cards.assasin(players,actual_turn)
+                        players[actual_turn].money -= 3
+                        break
+                    else:
+                        actual_turn -= 1
+                        break
+
+                elif option == 6: 
+
                     print('you chose Embajador') 
+                    cards.ambassador(players,actual_turn)
                     break
+
                 elif option == 7:  
                     print('you chose Duque') 
-                    players[game.actual_turn].money += 3
-                    print(players[game.actual_turn].name,'monedas: ',players[game.actual_turn].money)
+                    cards.duke(players,actual_turn)
                     break
-                elif option == 6:  
+
+                elif option == 8:  
+
                     print('you chose Condesa') 
+                    print('this option is just to block assasination please choose again')
+                    actual_turn -= 1
                     break
-            game.actual_turn +=1
+                
+            game.winner(players)
+            show_people()
+            final_turn = len(players)
+            actual_turn +=1
+            print('')
+
             
         
 def show_people():
@@ -101,13 +110,16 @@ def create_player(numero):
         name = input('Whats your players name: ')
         p1 = Player(name, 2, [])
         print('')
-        p1.recieve_cards(game.deck_of_cards[0])
-        game.deck_of_cards.remove(game.deck_of_cards[0])
-        p1.recieve_cards(game.deck_of_cards[0])
-        game.deck_of_cards.remove(game.deck_of_cards[0])
+        p1.recieve_cards(deck.deck_of_cards[0])
+        deck.deck_of_cards.remove(deck.deck_of_cards[0])
+        p1.recieve_cards(deck.deck_of_cards[0])
+        deck.deck_of_cards.remove(deck.deck_of_cards[0])
         players.append(p1)
     return players
 
+def show_coins():
+    for (i, _) in enumerate(players):
+        print(f"{i+1}: name: {players[i].name} -  money: {players[i].money}")
 
 def print_menu_and_select():
     print("\nSelect one of these options")
@@ -128,7 +140,7 @@ def menu():
                 if number_of_players > 4 or number_of_players < 3:
                     False
                 else:
-                    game.final_turn = number_of_players
+                    final_turn = number_of_players
                     players = create_player(number_of_players)
                     
                     break
