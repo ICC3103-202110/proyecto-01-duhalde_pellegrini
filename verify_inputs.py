@@ -5,6 +5,7 @@ class Verify:
 
         self.verify_plays = verify_plays()
         self.verify_choice_player = verify_choice_player()
+        self.verify_choice_card = verify_choice_card()
     
     #no use yet
  '''   def verify_inputs(self, v):
@@ -35,5 +36,13 @@ class Verify:
                 return False
             else:
                 return True
-            
+    def verify_choice_card(self,value):
+        if value > len(player[actual_turn].cards):
+            print('The choice has to be between 1 and ' + len(player[actual_turn].cards))
+            return False
+        if value < 1:
+            print('The choice has to be between 1 and ' + len(player[actual_turn].cards))
+            return False
+        else:
+            return True    
             
