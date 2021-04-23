@@ -176,9 +176,8 @@ class Cards:
             deck.deck_of_cards.remove(deck.deck_of_cards[0])
             players[actual_turn].recieve_cards(deck.deck_of_cards[0])
             deck.deck_of_cards.remove(deck.deck_of_cards[0])
-            print('select which cards you want to discard')
-            players[actual_turn].kill_card
-            players[actual_turn].kill_card
+            players[actual_turn].return_card_to_deck
+            players[actual_turn].return_card_to_deck
             return
         else:
             print('person that blocked: ',players_that_block.name)
@@ -205,9 +204,8 @@ class Cards:
                     deck.deck_of_cards.remove(deck.deck_of_cards[0])
                     players[actual_turn].recieve_cards(deck.deck_of_cards[0])
                     deck.deck_of_cards.remove(deck.deck_of_cards[0])
-                    print('select which cards you want to discard')
-                    players[actual_turn].kill_card
-                    players[actual_turn].kill_card
+                    players[actual_turn].return_card_to_deck
+                    players[actual_turn].return_card_to_deck
                     players_that_block.cards.pop(0)
                     x = players.index(players_that_block)
                     game.remove_losers(x, players)

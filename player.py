@@ -42,11 +42,17 @@ class Player:
         kill_card = int(input('what card do you want to eliminate (1/2): ')) -1 }
         if Verify.verify_choice_card(kill_card) == True:
             kill_card = player.cards.pop(kill_card)
-            return kill_card
+            return 
         else : 
             kill_card = int(input('what card do you want to eliminate (1/2): ')) -1 }
             kill_card = player.cards.pop(kill_card)
-            return kill_card
+            return 
+
+    def return_card_to_deck(self):
+        kill_card = int(input('what card do you want to return to deck : ')) -1 }
+        deck.deck_of_cards.append(player[actual_turn].cards[kill_card])
+        kill_card = player[actual_turn].cards.pop(kill_card)
+        return
 
     def coup(self, players):
         if len(players) == 3:
