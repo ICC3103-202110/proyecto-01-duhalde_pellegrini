@@ -31,5 +31,5 @@ class Deck_cards:
                 deck_of_cards.append(figure)
         random.shuffle(deck_of_cards)
         print('')
-        print(deck_of_cards)
+        #print(deck_of_cards)
         return deck_of_cards

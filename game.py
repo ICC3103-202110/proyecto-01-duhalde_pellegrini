@@ -3,6 +3,8 @@ import random
 class Game:
     def __init__(self):
         self.cards = []
+        self.round_summary = []
+
     
     def welcome_board(self):
         print("\n")

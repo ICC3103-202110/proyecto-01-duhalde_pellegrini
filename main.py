@@ -6,6 +6,7 @@ from verify_inputs import Verify
 
 deck = Deck_cards()
 players = []
+summary = []
 game = Game()
 p1 = Player(0,0,0)
 cards = Cards()
@@ -28,23 +29,24 @@ def start_game():
             
             print('its the turn of', players[actual_turn].name) 
             option = p1.player_action()
-            if Verify.verify_plays(option) == True:
-                continue
-            else :
-                option = p1.player_action()
+            #if Verify.verify_plays(option) == True:
+            #    continue
+            #else :
+            #    option = p1.player_action()
             while True:
                 
                 if option == 1:
 
-                    print('you chose ingreso')
+                    print('you chose entry')
                     players[actual_turn].money += 1
                     print(players[actual_turn].name,'money: ',players[actual_turn].money)
                     break
 
                 elif option == 2:
 
-                    print('you chose ayuda externa')
+                    print('you chose external help')
                     cards.external_help(players,actual_turn)
+                    
                     break
 
                 elif option == 3:
@@ -60,14 +62,14 @@ def start_game():
 
                 elif option == 4:
 
-                    print('you chose Capitan')
+                    print('you chose Captain')
                     cards.captain(players,actual_turn)
                     
                     break
 
                 elif option == 5:
 
-                    print('you chose Asesino ')
+                    print('you chose assasin ')
                     if players[actual_turn].money >= 3:
                         cards.assasin(players,actual_turn)
                         players[actual_turn].money -= 3
@@ -78,35 +80,48 @@ def start_game():
 
                 elif option == 6: 
 
-                    print('you chose Embajador') 
+                    print('you chose ambassador') 
                     cards.ambassador(players,actual_turn)
                     break
 
                 elif option == 7:  
-                    print('you chose Duque') 
+                    print('you chose Duke') 
                     cards.duke(players,actual_turn)
                     break
 
                 elif option == 8:  
 
-                    print('you chose Condesa') 
+                    print('you chose Contessa') 
                     print('this option is just to block assasination please choose again')
                     actual_turn -= 1
                     break
                 
+                elif option == 9:
+                    print('take a look of your cards')
+                    
+                    print('your cards: ',players[actual_turn].cards)
+                    
+                    actual_turn -= 1
+                    break
+            print('---------------------')
             game.winner(players)
-            show_people()
+            #show_people()
+            show_coins()
             final_turn = len(players)
-            actual_turn +=1
-            print('')
 
-            
-        
+            summary.clear()
+            actual_turn +=1
+            print('---------------------')
+
 def show_people():
     print("\nPeople Created: ")
     for (i, _) in enumerate(players):
-        print(f"{i+1}: name: {players[i].name} - cards: {players[i].cards} - money: {players[i].money}")
+        print(f"{i+1}: name: {players[i].name} - money: {players[i].money}")
 
+def show_round_summary():
+    print('summary of the round: ')
+    for x in summary:
+        print(x)
 
 def create_player(numero):
     n = 1

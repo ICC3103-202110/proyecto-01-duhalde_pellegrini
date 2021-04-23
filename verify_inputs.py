@@ -7,12 +7,8 @@ class Verify:
         self.verify_choice_player = verify_choice_player()
         self.verify_choice_card = verify_choice_card()
     
-    #no use yet
- '''   def verify_inputs(self, v):
-        value = v + 1
-        verify_options = list(range(1, value))
-        print(verify_options)
-        return verify_options'''
+    
+
     def verify_plays(self,value):
         if value > 8:
             print('The choice has to be between 1 and 8')
