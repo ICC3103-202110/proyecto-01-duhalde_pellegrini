@@ -21,6 +21,8 @@ def start_game():
 
     while True:
         if actual_turn >= final_turn:
+            show_round_summary()
+            summary.clear()
             actual_turn = 0 
             print('new round...')
              
@@ -40,12 +42,14 @@ def start_game():
                     print('you chose entry')
                     players[actual_turn].money += 1
                     print(players[actual_turn].name,'money: ',players[actual_turn].money)
+                    x = str(players[actual_turn].name) + " got 1 coin from the option entry"
+                    summary.append(x)
                     break
 
                 elif option == 2:
 
                     print('you chose external help')
-                    cards.external_help(players,actual_turn)
+                    cards.external_help(players,actual_turn,summary)
                     
                     break
 
@@ -58,12 +62,13 @@ def start_game():
                         actual_turn -= 1
                         break
                     else:
-                        player.coup()
+                        p1.coup(players, summary)
+                        break
 
                 elif option == 4:
 
                     print('you chose Captain')
-                    cards.captain(players,actual_turn)
+                    cards.captain(players,actual_turn,summary)
                     
                     break
 
@@ -81,12 +86,12 @@ def start_game():
                 elif option == 6: 
 
                     print('you chose ambassador') 
-                    cards.ambassador(players,actual_turn)
+                    cards.ambassador(players,actual_turn,summary)
                     break
 
                 elif option == 7:  
                     print('you chose Duke') 
-                    cards.duke(players,actual_turn)
+                    cards.duke(players,actual_turn,summary)
                     break
 
                 elif option == 8:  
@@ -105,11 +110,9 @@ def start_game():
                     break
             print('---------------------')
             game.winner(players)
-            #show_people()
+            #show_people() 
             show_coins()
             final_turn = len(players)
-
-            summary.clear()
             actual_turn +=1
             print('---------------------')
 
