@@ -12,13 +12,7 @@ class Cards:
         
         
 
-    def duke(self,players,actual_turn):
-        '''
-        players[x].money += 3
-        print(players[x].name,'monedas: ',players[x].money)
-        return
-        '''
-        
+    def duke(self,players,actual_turn) :
         players_that_challenge = []
         players_that_challenge = (game.ask_who_challenges(actual_turn, players))
         
