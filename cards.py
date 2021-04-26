@@ -11,20 +11,13 @@ class Cards:
     def __init__(self):
         self.cards = []
         
-        
-        
 
-<<<<<<< HEAD
-    def duke(self,players,actual_turn) :
-=======
     def duke(self,players,actual_turn,summary):
         '''
         players[x].money += 3
         print(players[x].name,'monedas: ',players[x].money)
         return
         '''
-        
->>>>>>> 60f364b5a3be06d3d5f89a5e5d4936bb369a8b62
         players_that_challenge = []
         players_that_challenge = (game.ask_who_challenges(actual_turn, players))
         
@@ -205,11 +198,10 @@ class Cards:
             print('your play was succesfull, no one blocked you!')
             x = str(players[actual_turn].name) + " succesfully used ambassador"
             summary.append(x)
-            '''
-            players[actual_turn].recieve_cards(Deck.deck_of_cards[0])
-            deck.deck_of_cards.remove(Deck.deck_of_cards[0])
-            players[actual_turn].recieve_cards(Deck.deck_of_cards[0])
-            deck.deck_of_cards.remove(Deck.deck_of_cards[0])
+            players[actual_turn].recieve_cards(deck.deck_of_cards[0])
+            deck.deck_of_cards.remove(deck.deck_of_cards[0])
+            players[actual_turn].recieve_cards(deck.deck_of_cards[0])
+            deck.deck_of_cards.remove(deck.deck_of_cards[0])
             players[actual_turn].return_card_to_deck
             players[actual_turn].return_card_to_deck
             return
@@ -227,26 +219,17 @@ class Cards:
                 print(players_counts_block.name,'counted block')
 
                 if 'capitan' in players_that_block.cards:
-<<<<<<< HEAD
-                    print('your count has failed',players_counts_block.name,'you loose a card')
-=======
                     print('your count has failed',players_counts_block.name,'you loose a cards')
                     x = str(players_counts_block.name) + " Lost  a card"
                     summary.append(x)
->>>>>>> 60f364b5a3be06d3d5f89a5e5d4936bb369a8b62
                     x = players.index(players_counts_block)
                     players[x].cards.pop(0)
                     game.remove_losers(x, players)
                     return           
                 else:
-<<<<<<< HEAD
-                    print('you lost the count', players_that_block.name,'you loose a card')
-=======
                     print('you lost the count', players_that_block.name,'you loose a cards')
                     x = str(players_that_block.name) + " Lost  a card"
                     summary.append(x)
-                    '''
->>>>>>> 60f364b5a3be06d3d5f89a5e5d4936bb369a8b62
                     players[actual_turn].recieve_cards(deck.deck_of_cards[0])
                     deck.deck_of_cards.remove(deck.deck_of_cards[0])
                     players[actual_turn].recieve_cards(deck.deck_of_cards[0])
