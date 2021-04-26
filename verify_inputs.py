@@ -21,13 +21,19 @@ class Verify:
     
     def verify_choice_player(self,value):
         if len(players) == 3:
-            if value > 3 or value < 1:
+            if value > 3 :
+                print('The choice has to be between 1 and 3')
+                return False
+            if value < 1:
                 print('The choice has to be between 1 and 3')
                 return False
             else:
                 return True
         if len(players) == 4:
-            if value > 4 or value < 1:
+            if value > 4 :
+                print('The choice has to be between 1 and 4')
+                return False
+            if value < 1:
                 print('The choice has to be between 1 and 4')
                 return False
             else:

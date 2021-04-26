@@ -1,8 +1,10 @@
-import random
 from player import Player
 from game import Game
+from deck_cards import Deck_cards
+from verify_inputs import Verify
 game = Game()
 p1  = Player(0,0,0)
+deck = Deck_cards()
 class Cards:
 
     
@@ -166,14 +168,12 @@ class Cards:
 
         if not players_that_block:
             print('your play was succesfull, no one blocked you!')
-            '''
-            players[actual_turn].recieve_cards(Deck.deck_of_cards[0])
-            deck.deck_of_cards.remove(Deck.deck_of_cards[0])
-            players[actual_turn].recieve_cards(Deck.deck_of_cards[0])
-            deck.deck_of_cards.remove(Deck.deck_of_cards[0])
+            players[actual_turn].recieve_cards(deck.deck_of_cards[0])
+            deck.deck_of_cards.remove(deck.deck_of_cards[0])
+            players[actual_turn].recieve_cards(deck.deck_of_cards[0])
+            deck.deck_of_cards.remove(deck.deck_of_cards[0])
             players[actual_turn].return_card_to_deck
             players[actual_turn].return_card_to_deck
-            '''
             return
         else:
             print('person that blocked: ',players_that_block.name)
@@ -189,21 +189,19 @@ class Cards:
                 print(players_counts_block.name,'counted block')
 
                 if 'capitan' in players_that_block.cards:
-                    print('your count has failed',players_counts_block.name,'you loose a cards')
+                    print('your count has failed',players_counts_block.name,'you loose a card')
                     x = players.index(players_counts_block)
                     players[x].cards.pop(0)
                     game.remove_losers(x, players)
                     return           
                 else:
-                    print('you lost the count', players_that_block.name,'you loose a cards')
-                    '''
+                    print('you lost the count', players_that_block.name,'you loose a card')
                     players[actual_turn].recieve_cards(deck.deck_of_cards[0])
                     deck.deck_of_cards.remove(deck.deck_of_cards[0])
                     players[actual_turn].recieve_cards(deck.deck_of_cards[0])
                     deck.deck_of_cards.remove(deck.deck_of_cards[0])
                     players[actual_turn].return_card_to_deck
                     players[actual_turn].return_card_to_deck
-                    '''
                     players_that_block.cards.pop(0)
                     x = players.index(players_that_block)
                     game.remove_losers(x, players)
