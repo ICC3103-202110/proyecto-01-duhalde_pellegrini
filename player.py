@@ -112,7 +112,7 @@ class Player:
                 print(players[kill-1].name, 'cards:',players[kill-1].cards)
                 return
     '''
-    def coup(self, players):
+    def coup(self, players, summary):
         if len(players) == 3:
             print('you do you want to kill:')
             print('1) kill', players[0].name)
@@ -120,8 +120,10 @@ class Player:
             print('3) kill', players[2].name)
 
             kill = int(input('select the number in here: '))
+            x = str(players[kill-1].name) + " Lost an influence because of option Coup"
+            summary.append(x)
             players[kill-1].cards.pop(0)
-            print(players[kill-1].name, 'cards:',players[kill-1].cards)
+            
             return
             
         elif len(players) == 4:
@@ -133,8 +135,10 @@ class Player:
             print('4) kill', players[3].name)
 
             kill = int(input('select the number in here: '))
+            x = str(players[kill-1].name) + " Lost an influence because of option Coup"
+            summary.append(x)
             players[kill-1].cards.pop(0)
-            print(players[kill-1].name, 'cards:',players[kill-1].cards)
+            
             return
         
         elif len(players) == 2:
@@ -143,8 +147,10 @@ class Player:
             print('2) kill', players[1].name)
 
             kill = int(input('select the number in here: '))
+            x = str(players[kill-1].name) + " Lost an influence because of option Coup"
+            summary.append(x)
             players[kill-1].cards.pop(0)
-            print(players[kill-1].name, 'cards:',players[kill-1].cards)
+            
             return
         
  
